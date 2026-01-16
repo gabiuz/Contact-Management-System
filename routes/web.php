@@ -21,3 +21,9 @@ Route::post("/login", function () {
 Route::get("/dashboard", function () {
     return view("dashboard");
 })->name("dashboard");
+
+// contacts page
+
+Route::get("/contacts", function () {
+    return view("contacts");
+})->name("contacts");
