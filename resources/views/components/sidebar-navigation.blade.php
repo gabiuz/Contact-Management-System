@@ -11,13 +11,12 @@
                     </a>
                 </div>
                 <div class="px-4 py-2 bg-blue-500 rounded">
-                    <a href="{{ route('contacts') }}" class="text-white text-base font-bold flex items-center gap-2 transition-all duration-200">
+                    <a href="{{ route('sales-rep-contacts') }}" class="text-white text-base font-bold flex items-center gap-2 transition-all duration-200">
                         <img src="{{ asset('icons/contacts.svg') }}" alt="Contacts" class="w-5 h-5 mr-2.5">
                         Contacts
                     </a>
                 </div>
             </div>
-            <!-- Support Section -->
             <div>
                 <h3 class="text-gray-500 text-xs font-bold uppercase mb-4">Support</h3>
                 <a href="#" class="flex items-center px-3 py-2.5 text-sm text-gray-700 rounded-lg hover:text-blue-500 hover:shadow-sm transition-all duration-200">

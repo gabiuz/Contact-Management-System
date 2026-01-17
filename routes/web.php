@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get("/register", function () {
     return view("auth.register");
@@ -18,12 +19,19 @@ Route::post("/login", function () {
     return redirect()->route("dashboard");
 });
 
+Route::post("/logout", function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect()->route("login");
+})->name("logout");
+
 Route::get("/dashboard", function () {
     return view("dashboard");
 })->name("dashboard");
 
 // contacts page
 
-Route::get("/contacts", function () {
-    return view("contacts");
-})->name("contacts");
+Route::get("/sales-rep-contacts", function () {
+    return view("sales-rep-contacts");
+})->name("sales-rep-contacts");

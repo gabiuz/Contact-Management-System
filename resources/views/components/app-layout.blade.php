@@ -22,11 +22,15 @@
 <body class="font-sans antialiased bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-sm">
-        <div class="px-8 py-4">
+        <div class="px-8 py-4 flex items-center justify-between">
             <h1 class="font-brunoAce text-lg font-bold">
                 <span class="text-gray-900">SixSeven</span>
                 <span class="text-blue-600"> Realty</span>
             </h1>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-500 rounded transition-colors duration-200 flex items-center gap-1">Logout</button>
+            </form>
         </div>
     </header>
     <div class="flex">
