@@ -1,8 +1,7 @@
-<!-- Add Contact Modal -->
 <div id="addContactModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
   <div class="flex items-center justify-center min-h-screen p-4">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl p-8">
-      <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Add Contact</h2>
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Add New Client Contact</h2>
       <form>
         <div class="grid grid-cols-3 gap-4 mb-6">
           <div>
@@ -18,7 +17,6 @@
             <input type="text" placeholder="Last Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
           </div>
         </div>
-
         <div class="grid grid-cols-2 gap-4 mb-6">
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
@@ -29,28 +27,45 @@
             <input type="text" placeholder="Mobile Number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
           </div>
         </div>
-
         <div class="grid grid-cols-2 gap-4 mb-6">
-          <div>
+          <div class="relative">
             <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Contact</label>
-            <input type="text" placeholder="Preferred Contact" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none bg-white pr-10">
+              <option value="" disabled selected>Select Preferred Contact</option>
+              <option value="email">Email</option>
+              <option value="mobile">Mobile</option>
+              <option value="Telephone">Telephone</option>
+            </select>
+            <div class="absolute right-3 top-[42px] pointer-events-none">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.00832 12.9741L14.1439 7.83844L14.7796 7.20282L13.5055 5.92876L12.8699 6.56438L9.00551 10.4288L5.14113 6.56438L4.50551 5.92876L3.23145 7.20282L3.86707 7.83844L8.36707 12.3384L9.0027 12.9741H9.00832Z" fill="#5C6F88" />
+              </svg>
+            </div>
           </div>
-          <div>
+          <div class="relative">
             <label class="block text-sm font-medium text-gray-700 mb-2">Client Type</label>
-            <input type="text" placeholder="Client Type" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none bg-white pr-10">
+              <option value="" disabled selected>Select Client Type</option>
+              <option value="buyer">Buyer</option>
+              <option value="seller">Seller</option>
+              <option value="renter">Renter</option>
+              <option value="investor">Investor</option>
+            </select>
+            <div class="absolute right-3 top-[42px] pointer-events-none">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.00832 12.9741L14.1439 7.83844L14.7796 7.20282L13.5055 5.92876L12.8699 6.56438L9.00551 10.4288L5.14113 6.56438L4.50551 5.92876L3.23145 7.20282L3.86707 7.83844L8.36707 12.3384L9.0027 12.9741H9.00832Z" fill="#5C6F88" />
+              </svg>
+            </div>
           </div>
         </div>
-
         <div class="mb-6">
           <label class="block text-sm font-medium text-gray-700 mb-2">Assigned Agent</label>
           <input type="text" placeholder="Assigned Agent" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
         </div>
-
         <div class="mb-8">
           <label class="block text-sm font-medium text-gray-700 mb-2">Customer Note</label>
           <input type="text" placeholder="Customer Note" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
         </div>
-
         <div class="flex justify-end gap-3">
           <button type="button" onclick="closeAddContactModal()" class="px-6 py-3 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition-colors duration-200 font-medium">
             Cancel
