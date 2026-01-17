@@ -4,14 +4,14 @@
         <div class="flex flex-col gap-8">
             <div>
                 <h3 class="text-gray-500 text-xs font-bold uppercase mb-4">General</h3>
-                <div class="px-4 py-2">
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2 text-zinc-600 text-base font-normal">
+                <div class="px-4 py-2 {{ request()->routeIs('dashboard') ? 'bg-blue-500 rounded' : '' }}">
+                    <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'text-white text-base font-bold' : 'text-zinc-600 text-base font-normal' }} flex items-center gap-2 transition-all duration-200">
                         <img src="{{ asset('icons/dashboard.svg') }}" alt="Dashboard" class="w-5 h-5 mr-2.5">
                         Dashboard
                     </a>
                 </div>
-                <div class="px-4 py-2 bg-blue-500 rounded">
-                    <a href="{{ route('sales-rep-contacts') }}" class="text-white text-base font-bold flex items-center gap-2 transition-all duration-200">
+                <div class="px-4 py-2 {{ request()->routeIs('sales-rep-contacts') ? 'bg-blue-500 rounded' : '' }}">
+                    <a href="{{ route('sales-rep-contacts') }}" class="{{ request()->routeIs('sales-rep-contacts') ? 'text-white text-base font-bold' : 'text-zinc-600 text-base font-normal' }} flex items-center gap-2 transition-all duration-200">
                         <img src="{{ asset('icons/contacts.svg') }}" alt="Contacts" class="w-5 h-5 mr-2.5">
                         Contacts
                     </a>
