@@ -30,8 +30,12 @@ Route::get("/dashboard", function () {
     return view("dashboard");
 })->name("dashboard");
 
-// contacts page
-
+// Sales Rep - Contacts page
 Route::get("/sales-rep-contacts", function () {
-    return view("sales-rep-contacts");
+    return view("sales-rep.sales-rep-contacts");
 })->name("sales-rep-contacts");
+
+// Admin - Sales Rep Management
+Route::get("/admin-sales-rep", function () {
+    return view("admin.admin-sales-rep");
+})->name("admin-sales-rep");
