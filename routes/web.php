@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SalesRepContactController;
+use App\Http\Controllers\ContactController;
 
-Route::get("/register", function () {
+Route::get("/", function () {
     return view("auth.register");
 })->name("register");
 
@@ -31,16 +33,21 @@ Route::get("/dashboard", function () {
 })->name("dashboard");
 
 // Sales Rep - Contacts page
-Route::get("/sales-rep-contacts", function () {
-    return view("sales-rep.sales-rep-contacts");
-})->name("sales-rep-contacts");
+Route::get('/sales-rep-contacts', [SalesRepContactController::class, 'index'])
+    ->name('sales-rep-contacts');
+
+Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
 
 // Admin - Sales Rep Management
 Route::get("/admin-sales-rep", function () {
     return view("admin.admin-sales-rep");
 })->name("admin-sales-rep");
 
+<<<<<<< HEAD
 // Admin - Client Management
 Route::get("/admin-client", function () {
     return view("admin.admin-client");
 })->name("admin-client");
+=======
+
+>>>>>>> a8c056e1638436997924b75e51c5405baa8298f6

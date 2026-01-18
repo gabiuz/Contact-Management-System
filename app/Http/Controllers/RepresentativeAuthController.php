@@ -21,7 +21,7 @@ class RepresentativeAuthController extends Controller
 
         if (Auth::guard('representative')->attempt([
             'email' => $credentials['email'],
-            'pass' => $credentials['pass'],
+            'password' => $credentials['pass'],
         ])) {
             $request->session()->regenerate();
             return redirect()->intended('/representative/dashboard');
@@ -29,7 +29,7 @@ class RepresentativeAuthController extends Controller
 
         return back()->withErrors([
             'email' => 'Invalid email or password.',
-        ]);
+        ])->onlyInput('email');
     }
 
     public function logout(Request $request)
