@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SalesRepContactController;
+use App\Http\Controllers\AdminClientController;
 
 Route::get("/", function () {
     return view("auth.register");
@@ -44,6 +45,11 @@ Route::get("/admin-sales-rep", function () {
 })->name("admin-sales-rep");
 
 // Admin - Client Management
-Route::get("/admin-client", function () {
-    return view("admin.admin-client");
-})->name("admin-client");
+Route::get('/admin-client', [AdminClientController::class, 'index'])
+    ->name('admin-client');
+
+Route::post('/admin-client', [AdminClientController::class, 'store'])
+    ->name('admin-client.store');
+
+Route::delete('/admin-client/{contact}', [AdminClientController::class, 'destroy'])
+    ->name('admin-client.destroy');

@@ -1,51 +1,54 @@
 <div id="deleteConfirmModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 mx-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+  <div
+    class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 mx-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
     <h2 class="text-2xl font-bold text-gray-900 text-center mb-4">Are you sure you want to delete this contact?</h2>
     <p class="text-center text-gray-600 mb-8">This action cannot be undone</p>
     <div class="flex justify-center gap-4">
-      <button onclick="closeDeleteConfirmModal()" class="px-8 py-3 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition-colors duration-200 font-medium">
+      <button onclick="closeDeleteConfirmModal()"
+        class="px-8 py-3 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition-colors duration-200 font-medium">
         No
       </button>
-      <button onclick="confirmDelete()" class="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200 font-medium">
+      <button onclick="confirmDelete()"
+        class="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200 font-medium">
         Yes
       </button>
     </div>
   </div>
 </div>
 
-<script>
-  let contactToDelete = null;
+<form id="deleteContactForm" method="POST" class="hidden">
+  @csrf
+  @method('DELETE')
+</form>
 
-  function openDeleteConfirmModal(contactId) {
-    contactToDelete = contactId;
+<script>
+  let deleteActionUrl = null;
+
+  function openDeleteConfirmModal(actionUrl) {
+    deleteActionUrl = actionUrl;
     document.getElementById('deleteConfirmModal').classList.remove('hidden');
   }
 
   function closeDeleteConfirmModal() {
-    contactToDelete = null;
+    deleteActionUrl = null;
     document.getElementById('deleteConfirmModal').classList.add('hidden');
   }
 
   function confirmDelete() {
-    if (contactToDelete) {
-      // Handle actual deletion here
-      console.log('Deleting contact:', contactToDelete);
-      // You would typically make an API call here
-      closeDeleteConfirmModal();
-    }
+    if (!deleteActionUrl) return;
+
+    const form = document.getElementById('deleteContactForm');
+    form.action = deleteActionUrl;
+    form.submit();
   }
 
   // Close modal when clicking outside
-  document.getElementById('deleteConfirmModal')?.addEventListener('click', function(e) {
-    if (e.target === this) {
-      closeDeleteConfirmModal();
-    }
+  document.getElementById('deleteConfirmModal')?.addEventListener('click', function (e) {
+    if (e.target === this) closeDeleteConfirmModal();
   });
 
   // Close modal on ESC key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      closeDeleteConfirmModal();
-    }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeDeleteConfirmModal();
   });
 </script>
