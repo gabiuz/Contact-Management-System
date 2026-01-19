@@ -43,4 +43,7 @@ Route::get("/admin-sales-rep", function () {
     return view("admin.admin-sales-rep");
 })->name("admin-sales-rep");
 
-
+// Admin - Client Management
+Route::get("/admin-client", function () {
+    return view("admin.admin-client");
+})->name("admin-client");
