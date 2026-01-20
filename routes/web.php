@@ -28,9 +28,9 @@ Route::post("/logout", function () {
     return redirect()->route("login");
 })->name("logout");
 
-Route::get("/dashboard", function () {
-    return view("dashboard");
-})->name("dashboard");
+Route::get("/sales-rep-dashboard", function () {
+    return view("sales-rep.sales-rep-dashboard");
+})->name("sales-rep-dashboard");
 
 // Sales Rep - Contacts page
 Route::get('/sales-rep-contacts', [SalesRepContactController::class, 'index'])
