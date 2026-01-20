@@ -4,14 +4,14 @@
       <h2 class="text-2xl font-semibold text-gray-900">Client</h2>
       <div class="relative">
         <form method="GET" action="{{ route('admin-client') }}" class="relative">
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search"
-                        class="w-80 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
-                    <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </form>
+          <input type="text" name="search" value="{{ request('search') }}" placeholder="Search"
+            class="w-80 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </form>
         <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
           viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -106,17 +106,8 @@
                 </td>
                 <td class="px-6 py-4 text-sm text-center">
                   <div class="flex items-center justify-center">
-                    <button onclick="openEditContactModal({
-                        firstName: 'Jedia',
-                        middleName: 'Iniwan',
-                        lastName: 'Sagun',
-                        email: 'jns@gmail.com',
-                        mobileNumber: '09123456789',
-                        preferredContact: 'mobile',
-                        clientType: 'buyer',
-                        assignedAgent: 'Gianne Dasco',
-                        customerNote: 'Customer Note'
-                    })" class="text-blue-600 hover:bg-blue-50 rounded transition-colors duration-200">
+                    <button type="button" onclick='openEditContactModal(@json($contact))'
+                      class="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded transition-colors duration-200 inline-flex items-center gap-1">
                       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.4"
                           d="M11.5922 18.4079L13.9547 18.1125L20.5359 11.5313C19.8469 10.8422 19.1578 10.1532 18.4688 9.46411L11.8875 16.0454L11.5922 18.4079Z"
@@ -125,6 +116,7 @@
                           d="M11.8875 16.0453L18.4688 9.46406C19.1578 10.1531 19.8469 10.8422 20.5359 11.5312L13.9547 18.1125L11.5922 18.4078L11.8875 16.0453ZM21.0938 8.90625L20.0578 7.875L22.125 5.80781L24.1922 7.875L22.125 9.94219L21.0938 8.90625ZM27.375 7.875C25.0688 5.56875 22.6031 3.10312 22.125 2.625L20.5359 4.21406L9.75 15C9.4125 17.6953 9.16406 19.6969 9 21C10.3031 20.8359 12.3047 20.5875 15 20.25L25.7859 9.46406L27.375 7.875ZM4.125 6H3V27H24V16.5H21.75V24.75H5.25V8.25H13.5V6H4.125Z"
                           fill="#215195" />
                       </svg>
+
                     </button>
                     <button onclick="openDeleteConfirmModal(@js(route('admin-client.destroy', $contact)))"
                       class="text-red-600 hover:bg-red-50 rounded transition-colors duration-200">
