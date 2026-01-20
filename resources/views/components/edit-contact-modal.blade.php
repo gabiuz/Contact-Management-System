@@ -97,9 +97,9 @@
 </div>
 
 <script>
-  function openEditContactModal(contact) {
+  function openEditContactModal(contact, updateUrl) {
     const form = document.getElementById('edit-contact-form');
-    form.action = `/sales-rep-contacts/${contact.contact_id}`;
+    form.action = updateUrl;
 
     document.getElementById('edit-first-name').value = contact.first_name || '';
     document.getElementById('edit-middle-name').value = contact.middle_name || '';
@@ -118,11 +118,11 @@
     document.getElementById('editContactModal').classList.add('hidden');
   }
 
-  document.getElementById('editContactModal')?.addEventListener('click', function(e) {
+  document.getElementById('editContactModal')?.addEventListener('click', function (e) {
     if (e.target === this) closeEditContactModal();
   });
 
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeEditContactModal();
   });
 </script>

@@ -55,3 +55,6 @@ Route::post('/admin-client', [AdminClientController::class, 'store'])
 
 Route::delete('/admin-client/{contact}', [AdminClientController::class, 'destroy'])
     ->name('admin-client.destroy');
+
+Route::put('/admin-client/{contact}', [AdminClientController::class, 'update'])
+    ->name('admin-client.update');

@@ -108,7 +108,8 @@
                                     {{ $contact->customer_note ?? '-' }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-center">
-                                    <button type="button" onclick='openEditContactModal(@json($contact))'
+                                    <button type="button"
+                                        onclick='openEditContactModal(@json($contact), @json(route("sales-rep-contacts.update", $contact)))'
                                         class="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded transition-colors duration-200 inline-flex items-center gap-1">
                                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
