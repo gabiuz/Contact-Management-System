@@ -38,6 +38,8 @@ Route::get('/sales-rep-contacts', [SalesRepContactController::class, 'index'])
 
 Route::post('/sales-rep-contacts', [SalesRepContactController::class, 'store'])
     ->name('sales-rep-contacts.store');
+Route::put('/sales-rep-contacts/{contact}', [SalesRepContactController::class, 'update'])
+    ->name('sales-rep-contacts.update');
 
 // Admin - Sales Rep Management
 Route::get("/admin-sales-rep", function () {
@@ -53,3 +55,6 @@ Route::post('/admin-client', [AdminClientController::class, 'store'])
 
 Route::delete('/admin-client/{contact}', [AdminClientController::class, 'destroy'])
     ->name('admin-client.destroy');
+
+Route::put('/admin-client/{contact}', [AdminClientController::class, 'update'])
+    ->name('admin-client.update');
