@@ -41,6 +41,11 @@ Route::post('/sales-rep-contacts', [SalesRepContactController::class, 'store'])
 Route::put('/sales-rep-contacts/{contact}', [SalesRepContactController::class, 'update'])
     ->name('sales-rep-contacts.update');
 
+// Admin - Dashboard
+Route::get("/admin-dashboard", function () {
+    return view("admin.admin-dashboard");
+})->name("admin-dashboard");
+
 // Admin - Sales Rep Management
 Route::get("/admin-sales-rep", function () {
     return view("admin.admin-sales-rep");
