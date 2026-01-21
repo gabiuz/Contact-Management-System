@@ -22,7 +22,7 @@
 <body class="font-sans text-gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" style="background-image: url('/images/register-login-bg.jpg'); background-size: cover; background-position: center;">
         <h1 class="font-brunoAce text-8xl font-bold mb-4 text-center bg-gradient-to-b from-[#3888FB] to-[#215195] bg-clip-text text-transparent"><span class="bg-gradient-to-b from-black to-[#666666] bg-clip-text text-transparent">SixSeven</span> Realty</h1>
-        <h2 class="font-brunoAce text-4xl font-normal bg-gradient-to-b from-black to-[#666666] bg-clip-text text-transparent uppercase">contact management system</h2>
+        <h2 class="font-brunoAce text-4xl font-normal bg-gradient-to-b from-black to-[#666666] bg-clip-text text-transparent text-center uppercase">contact management system</h2>
         <div class="w-full md:max-w-2xl sm:max-w-md sm:max-h-full mt-6 px-16 py-12 bg-white shadow-md overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>

@@ -5,7 +5,7 @@
         <h2 class="text-3xl text-center font-bold mb-4">Login to Your Account</h2>
 
         <!-- Name -->
-        <div class="flex gap-6 my-2">
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 my-4">
             <div class="">
                 <x-input-label for="first_name" :value="__('First Name')" />
                 <x-text-input name="first_name" id="first_name" class="block mt-1 w-full" type="text"
