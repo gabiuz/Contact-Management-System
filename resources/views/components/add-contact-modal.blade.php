@@ -5,13 +5,13 @@
       <form method="POST" action="{{ route('sales-rep-contacts.store') }}">
         @csrf
         @if ($errors->any())
-          <div class="mb-4 p-3 rounded bg-red-100 text-red-700">
-            <ul class="list-disc pl-5">
-              @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-          </div>
+        <div class="mb-4 p-3 rounded bg-red-100 text-red-700">
+          <ul class="list-disc pl-5">
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
         @endif
         <div class="grid grid-cols-3 gap-4 mb-6">
           <div>
@@ -49,8 +49,10 @@
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none bg-white pr-10">
               <option value="" disabled selected>Select Preferred Contact</option>
               <option value="email">Email</option>
-              <option value="mobile">Mobile</option>
-              <option value="Telephone">Telephone</option>
+              <option value="call">Call</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="viber">Viber</option>
+              <option value="sms">SMS/Text</option>
             </select>
             <div class="absolute right-3 top-[42px] pointer-events-none">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,8 +83,17 @@
         </div>
         <div class="mb-6">
           <label class="block text-sm font-medium text-gray-700 mb-2">Assigned Agent</label>
-          <input name="assigned_agent_id" type="number" placeholder="Assigned Agent"
+          <input name="assigned_agent_id" type="text" placeholder="Assigned Agent"
             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+        </div>
+        <div class="mb-6">
+          <label class="block text-sm font-medium text-gray-700 mb-2">Active Status</label>
+          <select name="active_status" placeholder="Active Status"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+            <option value="" disabled selected>Select Active Status</option>
+            <option value="active">Yes</option>
+            <option value="inactive">No</option>
+          </select>
         </div>
         <div class="mb-8">
           <label class="block text-sm font-medium text-gray-700 mb-2">Customer Note</label>
@@ -115,14 +126,14 @@
   }
 
   // Close modal when clicking outside
-  document.getElementById('addContactModal')?.addEventListener('click', function (e) {
+  document.getElementById('addContactModal')?.addEventListener('click', function(e) {
     if (e.target === this) {
       closeAddContactModal();
     }
   });
 
   // Close modal on ESC key
-  document.addEventListener('keydown', function (e) {
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       closeAddContactModal();
     }
