@@ -84,73 +84,72 @@
           </thead>
           <tbody>
             @forelse ($contacts as $contact)
-            <tr class="bg-violet-50 border-8 border-white">
-              <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->contact_id }}</td>
-              <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->first_name }}</td>
-              <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->middle_name ?? '-' }}
-              </td>
-              <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->last_name }}</td>
-              <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->email ?? '-' }}</td>
-              <td class="px-6 py-4 text-sm text-center text-slate-500">
-                {{ $contact->mobile_number ?? '-' }}
-              </td>
-              <td class="px-6 py-4 text-sm text-center text-slate-500">
-                {{ $contact->preferred_contact ?? '-' }}
-              </td>
-              <!-- most likely ulit hahahahah
+              <tr class="bg-violet-50 border-8 border-white">
+                <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->contact_id }}</td>
+                <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->first_name }}</td>
+                <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->middle_name ?? '-' }}
+                </td>
+                <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->last_name }}</td>
+                <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->email ?? '-' }}</td>
                 <td class="px-6 py-4 text-sm text-center text-slate-500">
-                  {{ $contact->active_status ?? '-' }}
-                </td> -->
-              <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->client_type ?? '-' }}
-              </td>
-              <td class="px-6 py-4 text-sm text-center text-slate-500">
-                {{ optional($contact->representative)->first_name ? optional($contact->representative)->first_name . ' ' . optional($contact->representative)->last_name : '-' }}
-              </td>
-              <td class="px-6 py-4 text-sm text-center text-slate-500">
-                {{ $contact->customer_note ?? '-' }}
-              </td>
-              <td class="px-6 py-4 text-sm text-center">
-                <div class="flex items-center justify-center">
-                  <button type="button"
-                    onclick='openEditContactModal(@json($contact), @json(route("admin-client.update", $contact)))'
-                    class="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded transition-colors duration-200 inline-flex items-center gap-1">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path opacity="0.4"
-                        d="M11.5922 18.4079L13.9547 18.1125L20.5359 11.5313C19.8469 10.8422 19.1578 10.1532 18.4688 9.46411L11.8875 16.0454L11.5922 18.4079Z"
-                        fill="#215195" />
-                      <path
-                        d="M11.8875 16.0453L18.4688 9.46406C19.1578 10.1531 19.8469 10.8422 20.5359 11.5312L13.9547 18.1125L11.5922 18.4078L11.8875 16.0453ZM21.0938 8.90625L20.0578 7.875L22.125 5.80781L24.1922 7.875L22.125 9.94219L21.0938 8.90625ZM27.375 7.875C25.0688 5.56875 22.6031 3.10312 22.125 2.625L20.5359 4.21406L9.75 15C9.4125 17.6953 9.16406 19.6969 9 21C10.3031 20.8359 12.3047 20.5875 15 20.25L25.7859 9.46406L27.375 7.875ZM4.125 6H3V27H24V16.5H21.75V24.75H5.25V8.25H13.5V6H4.125Z"
-                        fill="#215195" />
-                    </svg>
+                  {{ $contact->mobile_number ?? '-' }}
+                </td>
+                <td class="px-6 py-4 text-sm text-center text-slate-500">
+                  {{ $contact->preferred_contact ?? '-' }}
+                </td>
+                <td class="px-6 py-4 text-sm text-center text-slate-500">
+                  {{ $contact->is_active ?? '-' }}
+                </td>
+                <td class="px-6 py-4 text-sm text-center text-slate-500">{{ $contact->client_type ?? '-' }}
+                </td>
+                <td class="px-6 py-4 text-sm text-center text-slate-500">
+                  {{ optional($contact->representative)->first_name ? optional($contact->representative)->first_name . ' ' . optional($contact->representative)->last_name : '-' }}
+                </td>
+                <td class="px-6 py-4 text-sm text-center text-slate-500">
+                  {{ $contact->customer_note ?? '-' }}
+                </td>
+                <td class="px-6 py-4 text-sm text-center">
+                  <div class="flex items-center justify-center">
+                    <button type="button"
+                      onclick='openEditContactModal(@json($contact), @json(route("admin-client.update", $contact)))'
+                      class="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded transition-colors duration-200 inline-flex items-center gap-1">
+                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.4"
+                          d="M11.5922 18.4079L13.9547 18.1125L20.5359 11.5313C19.8469 10.8422 19.1578 10.1532 18.4688 9.46411L11.8875 16.0454L11.5922 18.4079Z"
+                          fill="#215195" />
+                        <path
+                          d="M11.8875 16.0453L18.4688 9.46406C19.1578 10.1531 19.8469 10.8422 20.5359 11.5312L13.9547 18.1125L11.5922 18.4078L11.8875 16.0453ZM21.0938 8.90625L20.0578 7.875L22.125 5.80781L24.1922 7.875L22.125 9.94219L21.0938 8.90625ZM27.375 7.875C25.0688 5.56875 22.6031 3.10312 22.125 2.625L20.5359 4.21406L9.75 15C9.4125 17.6953 9.16406 19.6969 9 21C10.3031 20.8359 12.3047 20.5875 15 20.25L25.7859 9.46406L27.375 7.875ZM4.125 6H3V27H24V16.5H21.75V24.75H5.25V8.25H13.5V6H4.125Z"
+                          fill="#215195" />
+                      </svg>
 
-                  </button>
-                  <button onclick="openDeleteConfirmModal(@js(route('admin-client.destroy', $contact)))"
-                    class="text-red-600 hover:bg-red-50 rounded transition-colors duration-200">
-                    <svg width="30" height="30" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path opacity="0.4" d="M5.94338 7.15L6.75807 18.15H15.2418L16.0565 7.15H5.93994H5.94338Z"
-                        fill="#FF0004" />
-                      <path
-                        d="M8.25005 1.65H13.75L14.575 3.85H18.7V5.5H3.30005V3.85H7.42505L8.25005 1.65ZM5.22505 19.8L4.28661 7.15H5.94005L6.75474 18.15H15.2385L16.0532 7.15H17.7066L16.7682 19.8H5.21817H5.22505Z"
-                        fill="#FF0004" />
-                    </svg>
-                  </button>
-                </div>
-                <span class="text-slate-400 text-sm">—</span>
-              </td>
-            </tr>
+                    </button>
+                    <button onclick="openDeleteConfirmModal(@js(route('admin-client.destroy', $contact)))"
+                      class="text-red-600 hover:bg-red-50 rounded transition-colors duration-200">
+                      <svg width="30" height="30" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.4" d="M5.94338 7.15L6.75807 18.15H15.2418L16.0565 7.15H5.93994H5.94338Z"
+                          fill="#FF0004" />
+                        <path
+                          d="M8.25005 1.65H13.75L14.575 3.85H18.7V5.5H3.30005V3.85H7.42505L8.25005 1.65ZM5.22505 19.8L4.28661 7.15H5.94005L6.75474 18.15H15.2385L16.0532 7.15H17.7066L16.7682 19.8H5.21817H5.22505Z"
+                          fill="#FF0004" />
+                      </svg>
+                    </button>
+                  </div>
+                  <span class="text-slate-400 text-sm">—</span>
+                </td>
+              </tr>
             @empty
-            <tr>
-              <td colspan="11" class="px-6 py-6 text-center text-slate-500">
-                No contacts found.
-              </td>
-            </tr>
+              <tr>
+                <td colspan="11" class="px-6 py-6 text-center text-slate-500">
+                  No contacts found.
+                </td>
+              </tr>
             @endforelse
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  <x-add-contact-modal />
-  <x-edit-contact-modal />
+  <x-add-contact-modal :representatives="$representatives" />
+  <x-edit-contact-modal :representatives="$representatives" />
   <x-delete-confirm-modal />
 </x-admin-layout>

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SalesRepContactController;
 use App\Http\Controllers\AdminClientController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminSalesRepController;
 
 Route::get("/", function () {
     return view("auth.register");
@@ -14,20 +16,11 @@ Route::post("/register", [RegisterController::class, 'store'])
     ->name("register.store");
 
 
-Route::get("/login", function () {
-    return view("auth.login");
-})->name("login");
+Route::get("/login", [LoginController::class, 'show'])->name("login");
+Route::post("/login", [LoginController::class, 'store'])->name("login.store");
 
-Route::post("/login", function () {
-    return redirect()->route("dashboard");
-});
+Route::post("/logout", [LoginController::class, 'logout'])->name("logout");
 
-Route::post("/logout", function () {
-    Auth::logout();
-    request()->session()->invalidate();
-    request()->session()->regenerateToken();
-    return redirect()->route("login");
-})->name("logout");
 
 Route::get("/sales-rep-dashboard", function () {
     return view("sales-rep.sales-rep-dashboard");
@@ -48,9 +41,14 @@ Route::get("/admin-dashboard", function () {
 })->name("admin-dashboard");
 
 // Admin - Sales Rep Management
-Route::get("/admin-sales-rep", function () {
-    return view("admin.admin-sales-rep");
-})->name("admin-sales-rep");
+Route::get('/admin-sales-rep', [AdminSalesRepController::class, 'index'])
+    ->name('admin-sales-rep');
+
+Route::put('/admin-sales-rep/{representative}', [AdminSalesRepController::class, 'update'])
+    ->name('admin-sales-rep.update');
+
+Route::delete('/admin-sales-rep/{representative}', [AdminSalesRepController::class, 'destroy'])
+    ->name('admin-sales-rep.destroy');
 
 // Admin - Client Management
 Route::get('/admin-client', [AdminClientController::class, 'index'])

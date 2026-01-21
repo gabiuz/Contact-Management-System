@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Models\Representative;
 
 class SalesRepContactController extends Controller
 {
@@ -25,7 +26,12 @@ class SalesRepContactController extends Controller
         // keep search query when paging
         $contacts = $query->paginate(10)->withQueryString();
 
-        return view('sales-rep.sales-rep-contacts', compact('contacts'));
+        $representatives = Representative::select('representative_id', 'first_name', 'middle_name', 'last_name')
+            ->orderBy('first_name')
+            ->orderBy('last_name')
+            ->get();
+
+        return view('sales-rep.sales-rep-contacts', compact('contacts', 'representatives'));
     }
 
     public function store(Request $request)
@@ -40,6 +46,8 @@ class SalesRepContactController extends Controller
 
             'preferred_contact' => ['nullable', 'string', 'max:50'],
             'client_type' => ['nullable', 'string', 'max:50'],
+
+            'is_active' => ['required', 'in:active,inactive'],
 
             'assigned_agent_id' => ['nullable', 'integer', 'exists:representative,representative_id'],
             'customer_note' => ['nullable', 'string'],
@@ -64,6 +72,8 @@ class SalesRepContactController extends Controller
 
             'preferred_contact' => ['nullable', 'string', 'max:50'],
             'client_type' => ['nullable', 'string', 'max:50'],
+
+            'is_active' => ['required', 'in:active,inactive'],
 
             'assigned_agent_id' => ['nullable', 'integer', 'exists:representative,representative_id'],
             'customer_note' => ['nullable', 'string'],

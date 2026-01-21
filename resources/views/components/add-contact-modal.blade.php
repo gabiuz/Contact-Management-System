@@ -5,13 +5,13 @@
       <form method="POST" action="{{ route('sales-rep-contacts.store') }}">
         @csrf
         @if ($errors->any())
-        <div class="mb-4 p-3 rounded bg-red-100 text-red-700">
-          <ul class="list-disc pl-5">
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
+          <div class="mb-4 p-3 rounded bg-red-100 text-red-700">
+            <ul class="list-disc pl-5">
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
         @endif
         <div class="grid grid-cols-3 gap-4 mb-6">
           <div>
@@ -83,12 +83,20 @@
         </div>
         <div class="mb-6">
           <label class="block text-sm font-medium text-gray-700 mb-2">Assigned Agent</label>
-          <input name="assigned_agent_id" type="text" placeholder="Assigned Agent"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+          <select name="assigned_agent_id"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm bg-white">
+            <option value="" selected>Unassigned</option>
+
+            @foreach ($representatives as $rep)
+              <option value="{{ $rep->representative_id }}" @selected(old('assigned_agent_id') == $rep->representative_id)>
+                {{ trim($rep->first_name . ' ' . ($rep->middle_name ? $rep->middle_name . ' ' : '') . $rep->last_name) }}
+              </option>
+            @endforeach
+          </select>
         </div>
         <div class="mb-6">
           <label class="block text-sm font-medium text-gray-700 mb-2">Active Status</label>
-          <select name="active_status" placeholder="Active Status"
+          <select name="is_active" placeholder="Active Status"
             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
             <option value="" disabled selected>Select Active Status</option>
             <option value="active">Yes</option>
@@ -126,14 +134,14 @@
   }
 
   // Close modal when clicking outside
-  document.getElementById('addContactModal')?.addEventListener('click', function(e) {
+  document.getElementById('addContactModal')?.addEventListener('click', function (e) {
     if (e.target === this) {
       closeAddContactModal();
     }
   });
 
   // Close modal on ESC key
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       closeAddContactModal();
     }

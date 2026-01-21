@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Models\Representative;
 
 class AdminClientController extends Controller
 {
@@ -24,7 +25,12 @@ class AdminClientController extends Controller
 
         $contacts = $query->paginate(10)->withQueryString();
 
-        return view('admin.admin-client', compact('contacts'));
+        $representatives = Representative::select('representative_id', 'first_name', 'middle_name', 'last_name')
+            ->orderBy('first_name')
+            ->orderBy('last_name')
+            ->get();
+
+        return view('admin.admin-client', compact('contacts', 'representatives'));
     }
 
     public function store(Request $request)
@@ -36,6 +42,7 @@ class AdminClientController extends Controller
             'email' => ['nullable', 'email', 'max:255'],
             'mobile_number' => ['nullable', 'string', 'max:50'],
             'preferred_contact' => ['nullable', 'string', 'max:50'],
+            'is_active' => ['required', 'in:active,inactive'],
             'client_type' => ['nullable', 'string', 'max:50'],
             'assigned_agent_id' => ['nullable', 'integer', 'exists:representative,representative_id'],
             'customer_note' => ['nullable', 'string'],
@@ -59,6 +66,9 @@ class AdminClientController extends Controller
             'mobile_number' => ['nullable', 'string', 'max:50'],
 
             'preferred_contact' => ['nullable', 'string', 'max:50'],
+
+            'is_active' => ['required', 'in:active,inactive'],
+
             'client_type' => ['nullable', 'string', 'max:50'],
 
             'assigned_agent_id' => ['nullable', 'integer', 'exists:representative,representative_id'],

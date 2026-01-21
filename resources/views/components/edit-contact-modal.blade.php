@@ -41,8 +41,10 @@
               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none bg-white pr-10">
               <option value="" disabled selected>Select Preferred Contact</option>
               <option value="email">Email</option>
-              <option value="mobile">Mobile</option>
-              <option value="Telephone">Telephone</option>
+              <option value="call">Call</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="viber">Viber</option>
+              <option value="sms">SMS/Text</option>
             </select>
             <div class="absolute right-3 top-[42px] pointer-events-none">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,8 +75,24 @@
         </div>
         <div class="mb-6">
           <label class="block text-sm font-medium text-gray-700 mb-2">Assigned Agent</label>
-          <input name="assigned_agent_id" type="text" id="edit-assigned-agent" placeholder="Assigned Agent"
+          <select name="assigned_agent_id" id="edit-assigned-agent"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none bg-white pr-10">
+            <option value="" disabled selected>Select Assigned Agent</option>
+            @foreach ($representatives as $rep)
+              <option value="{{ $rep->representative_id }}">
+                {{ $rep->first_name }} {{ $rep->middle_name }} {{ $rep->last_name }}
+              </option>
+            @endforeach
+          </select>
+        </div>
+        <div class="mb-6">
+          <label class="block text-sm font-medium text-gray-700 mb-2">Active Status</label>
+          <select name="is_active" placeholder="Active Status" id="edit-is-active"
             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+            <option value="" disabled>Select Active Status</option>
+            <option value="active">Yes</option>
+            <option value="inactive">No</option>
+          </select>
         </div>
         <div class="mb-8">
           <label class="block text-sm font-medium text-gray-700 mb-2">Customer Note</label>
@@ -110,6 +128,7 @@
     document.getElementById('edit-client-type').value = contact.client_type || '';
     document.getElementById('edit-assigned-agent').value = contact.assigned_agent_id || '';
     document.getElementById('edit-customer-note').value = contact.customer_note || '';
+    document.getElementById('edit-is-active').value = contact.is_active || '';
 
     document.getElementById('editContactModal').classList.remove('hidden');
   }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->nullable();
             $table->string('mobile_number')->nullable();
-            $table->string('telephone')->nullable();
+            $table->string('is_active');
             $table->string('preferred_contact')->nullable();
             $table->string('client_type')->nullable();
             $table->unsignedBigInteger('assigned_agent_id')->nullable();
