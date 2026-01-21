@@ -1,6 +1,6 @@
 <!-- Admin Sidebar -->
-<aside class="w-72 min-h-full bg-violet-50 border border-gray-300 flex flex-col">
-  <nav class="flex-1 pl-[70px] py-8 pr-[56px]">
+<aside id="admin-sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 lg:w-72 min-h-full bg-violet-50 border border-gray-300 flex flex-col hidden lg:flex transition-transform duration-300">
+  <nav class="flex-1 px-4 py-6 lg:pl-[70px] lg:py-8 lg:pr-[56px]">
     <div class="flex flex-col gap-8">
       <div>
         <h3 class="text-gray-500 text-xs font-bold uppercase mb-4">General</h3>

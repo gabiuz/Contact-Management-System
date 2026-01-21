@@ -1,24 +1,24 @@
 <footer class="bg-white border-t border-gray-200 mt-auto">
-  <div class="flex flex-col gap-3.5 px-8 py-6">
-    <div class="flex items-start justify-between">
-      <div class="space-y-3">
-        <h2 class="font-brunoAce text-base font-bold">
+  <div class="flex flex-col gap-3.5 px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+    <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+      <div class="space-y-3 text-center md:text-left">
+        <h2 class="font-brunoAce text-sm sm:text-base font-bold">
           <span class="text-gray-900">SixSeven</span>
           <span class="text-blue-600"> Realty</span>
         </h2>
-        <div class="text-base text-black font-normal space-y-1">
+        <div class="text-sm sm:text-base text-black font-normal space-y-1">
           <p class="font-medium">Built on Trust. Backed by 67.</p>
           <p>Helping You Belong.</p>
         </div>
       </div>
-      <div class="text-right space-y-3">
-        <div class="flex gap-8 text-base text-black">
+      <div class="space-y-3 text-center md:text-right">
+        <div class="flex flex-col md:flex-row flex-wrap gap-4 sm:gap-6 md:gap-8 text-sm sm:text-base text-black justify-center md:justify-end">
           <a href="#" class="hover:text-blue-600 transition-colors">Dashboard</a>
           <a href="#" class="hover:text-blue-600 transition-colors">Contact</a>
           <a href="#" class="hover:text-blue-600 transition-colors">Help</a>
           <a href="#" class="hover:text-blue-600 transition-colors">Settings</a>
         </div>
-        <div class="flex gap-[24px] justify-end">
+        <div class="flex gap-4 sm:gap-6 justify-center md:justify-end">
           <a href="#" class="text-blue-600 hover:text-blue-700 transition-colors">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -38,10 +38,10 @@
       </div>
     </div>
     <hr>
-    <div class="flex justify-between">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
       <p class="text-xs text-gray-500 pt-2">Contact Management System.</p>
-      <p>© 2026 SixSeven Realty. All rights reserved.</p>
-      <a href="#" class="hover:text-blue-600 transition-colors">Terms & Conditions</a>
+      <p class="text-xs sm:text-sm">© 2026 SixSeven Realty. All rights reserved.</p>
+      <a href="#" class="text-xs sm:text-sm hover:text-blue-600 transition-colors">Terms & Conditions</a>
     </div>
   </div>
 </footer>
