@@ -17,8 +17,14 @@
                   d="M19.7249 7.41602L22.548 10.2465L16.5319 16.2783L11.6006 11.3342L2.46533 20.5055L4.20361 22.2483L11.6006 14.8322L16.5319 19.7763L24.2987 12.0017L27.1218 14.8322V7.41602H19.7249Z"
                   fill="#00B69B" />
               </svg>
-              <span class="text-sm font-medium text-teal-500">8.5%</span>
-              <span class="text-sm text-gray-500">Up from Last Week</span>
+              @php $contactsUp = $contactsPercent >= 0; @endphp
+
+              <span class="text-sm font-medium {{ $contactsUp ? 'text-teal-500' : 'text-red-500' }}">
+                {{ $contactsUp ? '+' : '' }}{{ number_format($contactsPercent, 1) }}%
+              </span>
+              <span class="text-sm text-gray-500">
+                {{ $contactsUp ? 'Up from Last Week' : 'Down from Last Week' }}
+              </span>
             </div>
           </div>
           <svg width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,8 +53,13 @@
                   d="M19.7249 7.41602L22.548 10.2465L16.5319 16.2783L11.6006 11.3342L2.46533 20.5055L4.20361 22.2483L11.6006 14.8322L16.5319 19.7763L24.2987 12.0017L27.1218 14.8322V7.41602H19.7249Z"
                   fill="#00B69B" />
               </svg>
-              <span class="text-sm font-medium text-teal-500">+40</span>
-              <span class="text-sm text-gray-500">added this week</span>
+              <span
+                class="text-sm font-medium {{ str_starts_with($salesRepsDeltaLabel, '-') ? 'text-red-500' : 'text-teal-500' }}">
+                {{ $salesRepsDeltaLabel }}
+              </span>
+              <span class="text-sm text-gray-500">
+                vs last week
+              </span>
             </div>
           </div>
           <svg width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,8 +88,14 @@
                   d="M19.7249 7.41602L22.548 10.2465L16.5319 16.2783L11.6006 11.3342L2.46533 20.5055L4.20361 22.2483L11.6006 14.8322L16.5319 19.7763L24.2987 12.0017L27.1218 14.8322V7.41602H19.7249Z"
                   fill="#00B69B" />
               </svg>
-              <span class="text-sm font-medium text-teal-500">8.5%</span>
-              <span class="text-sm text-gray-500">Up from Last Week</span>
+              @php $isUp = $activePercent >= 0; @endphp
+
+              <span class="text-sm font-medium {{ $isUp ? 'text-teal-500' : 'text-red-500' }}">
+                {{ $isUp ? '+' : '' }}{{ number_format($activePercent, 1) }}%
+              </span>
+              <span class="text-sm text-gray-500">
+                {{ $isUp ? 'Up from Last Week' : 'Down from Last Week' }}
+              </span>
             </div>
           </div>
           <svg width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">

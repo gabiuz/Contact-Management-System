@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\Representative;
+use Carbon\Carbon;
 
 class AdminDashboardController extends Controller
 {
@@ -51,6 +52,37 @@ class AdminDashboardController extends Controller
             $preferredContactData[$k] = (int) ($preferredCounts[$k] ?? 0);
         }
 
+        $startThisWeek = now()->startOfWeek();
+        $endThisWeek = now()->endOfWeek();
+
+        $startLastWeek = now()->subWeek()->startOfWeek();
+        $endLastWeek = now()->subWeek()->endOfWeek();
+
+        $contactsThisWeek = Contact::whereBetween('created_at', [$startThisWeek, $endThisWeek])->count();
+        $contactsLastWeek = Contact::whereBetween('created_at', [$startLastWeek, $endLastWeek])->count();
+
+        $contactsPercent = $contactsLastWeek > 0
+            ? (($contactsThisWeek - $contactsLastWeek) / $contactsLastWeek) * 100
+            : ($contactsThisWeek > 0 ? 100 : 0);
+
+        $salesRepsThisWeek = Representative::whereBetween('created_at', [$startThisWeek, $endThisWeek])->count();
+        $salesRepsLastWeek = Representative::whereBetween('created_at', [$startLastWeek, $endLastWeek])->count();
+
+        $salesRepsDelta = $salesRepsThisWeek - $salesRepsLastWeek;
+        $salesRepsDeltaLabel = $salesRepsDelta >= 0 ? "+{$salesRepsDelta}" : (string) $salesRepsDelta;
+
+        $activeThisWeek = Contact::where('is_active', 'active')
+            ->whereBetween('updated_at', [$startThisWeek, $endThisWeek])
+            ->count();
+
+        $activeLastWeek = Contact::where('is_active', 'active')
+            ->whereBetween('updated_at', [$startLastWeek, $endLastWeek])
+            ->count();
+
+        $activePercent = $activeLastWeek > 0
+            ? (($activeThisWeek - $activeLastWeek) / $activeLastWeek) * 100
+            : ($activeThisWeek > 0 ? 100 : 0);
+
         return view('admin.admin-dashboard', compact(
             'totalContacts',
             'totalSalesReps',
@@ -58,7 +90,10 @@ class AdminDashboardController extends Controller
             'topRep',
             'mostActiveRep',
             'clientsPerRep',
-            'preferredContactData'
+            'preferredContactData',
+            'contactsPercent',
+            'salesRepsDeltaLabel',
+            'activePercent'
         ));
     }
     function repColor(int $id): string
