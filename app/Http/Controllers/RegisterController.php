@@ -11,19 +11,27 @@ class RegisterController extends Controller
 {
     public function store(Request $request)
     {
+        $source = $request->input('source');
+
+        $request->merge([
+            'first_name' => $this->normalizeName($request->input('first_name')),
+            'middle_name' => $this->normalizeName($request->input('middle_name')),
+            'last_name' => $this->normalizeName($request->input('last_name')),
+        ]);
+
         $data = $request->validate([
-            'first_name' => ['required','string','max:255'],
-            'middle_name' => ['nullable','string','max:255'],
-            'last_name' => ['required','string','max:255'],
-            'email' => ['required','email','max:255'],
-            'password' => ['required','min:6'],
-            'role' => ['required','in:admin,sales-rep'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'middle_name' => ['nullable', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'password' => ['required', 'min:6'],
+            'role' => ['required', 'in:admin,sales-rep'],
         ]);
 
         $model = $data['role'] === 'admin' ? Admin::class : Representative::class;
 
-        if ($model::where('email', $data['email'])->exists()) {
-            return back()->withErrors(['email' => 'Email already registered for this role.'])->withInput();
+        if (Admin::where('email', $data['email'])->exists() || Representative::where('email', $data['email'])->exists()) {
+            return back()->withErrors(['email' => 'Email already used.'])->withInput();
         }
 
         $model::create([
@@ -34,6 +42,26 @@ class RegisterController extends Controller
             'pass' => Hash::make($data['password']),
         ]);
 
-        return redirect()->route('login')->with('success', 'Registered successfully! Please log in.');
+        if ($source === 'admin-sales-rep') {
+            return redirect()
+                ->route('admin-sales-rep')
+                ->with('success', 'Sales rep added successfully!');
+        }
+
+        return redirect()
+            ->route('login')
+            ->with('success', 'Registered successfully! Please log in.');
+    }
+    private function normalizeName(?string $value): ?string
+    {
+        if ($value === null)
+            return null;
+
+        $value = preg_replace('/\s+/', ' ', trim($value));
+
+        if ($value === '')
+            return null;
+
+        return \Str::title(\Str::lower($value));
     }
 }
