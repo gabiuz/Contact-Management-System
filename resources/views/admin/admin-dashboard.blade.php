@@ -1,16 +1,16 @@
 <x-admin-layout>
   <div class="space-y-6">
     <!-- Page Title -->
-    <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+    <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">Dashboard</h1>
 
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid lg:grid-cols-1 xl:grid-cols-3 gap-6">
       <!-- Total Contacts Card -->
       <div class="bg-white rounded-lg shadow-sm p-6">
         <div class="flex items-start justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600 mb-2">Total Contacts</p>
-            <h3 class="text-4xl font-bold text-gray-900">{{ $totalContacts }}</h3>
+            <h3 class="text-3xl sm:text-4xl font-bold text-gray-900">{{ $totalContacts }}</h3>
             <div class="flex items-center gap-1 mt-3">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -19,15 +19,15 @@
               </svg>
               @php $contactsUp = $contactsPercent >= 0; @endphp
 
-              <span class="text-sm font-medium {{ $contactsUp ? 'text-teal-500' : 'text-red-500' }}">
+              <span class="whitespace-nowrap text-xs sm:text-sm font-medium {{ $contactsUp ? 'text-teal-500' : 'text-red-500' }}">
                 {{ $contactsUp ? '+' : '' }}{{ number_format($contactsPercent, 1) }}%
               </span>
-              <span class="text-sm text-gray-500">
+              <span class="whitespace-nowrap text-xs sm:text-sm text-gray-500">
                 {{ $contactsUp ? 'Up from Last Week' : 'Down from Last Week' }}
               </span>
             </div>
           </div>
-          <svg width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="flex-shrink-0" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path opacity="0.21"
               d="M50.9697 0C63.6722 0.000138887 73.9697 10.2975 73.9697 23V51.1611C73.9697 63.8636 63.6722 74.161 50.9697 74.1611H23C10.2975 74.1611 0 63.8637 0 51.1611V23C9.2858e-06 10.2975 10.2975 0 23 0H50.9697Z"
               fill="#215195" />
@@ -46,7 +46,7 @@
         <div class="flex items-start justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600 mb-2">Total Sales Rep</p>
-            <h3 class="text-4xl font-bold text-gray-900">{{ $totalSalesReps }}</h3>
+            <h3 class="text-3xl sm:text-4xl font-bold text-gray-900">{{ $totalSalesReps }}</h3>
             <div class="flex items-center gap-1 mt-3">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -54,15 +54,15 @@
                   fill="#00B69B" />
               </svg>
               <span
-                class="text-sm font-medium {{ str_starts_with($salesRepsDeltaLabel, '-') ? 'text-red-500' : 'text-teal-500' }}">
+                class="whitespace-nowrap text-xs sm:text-sm font-medium {{ str_starts_with($salesRepsDeltaLabel, '-') ? 'text-red-500' : 'text-teal-500' }}">
                 {{ $salesRepsDeltaLabel }}
               </span>
-              <span class="text-sm text-gray-500">
+              <span class="whitespace-nowrap text-xs sm:text-sm text-gray-500">
                 vs last week
               </span>
             </div>
           </div>
-          <svg width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="flex-shrink-0" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path opacity="0.21"
               d="M50.9697 0C63.6722 0.000138887 73.9697 10.2975 73.9697 23V51.1611C73.9697 63.8636 63.6722 74.161 50.9697 74.1611H23C10.2975 74.1611 0 63.8637 0 51.1611V23C9.2858e-06 10.2975 10.2975 0 23 0H50.9697Z"
               fill="#215195" />
@@ -81,7 +81,7 @@
         <div class="flex items-start justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600 mb-2">Active Clients</p>
-            <h3 class="text-4xl font-bold text-gray-900">{{ $activeClients }}</h3>
+            <h3 class="text-3xl sm:text-4xl font-bold text-gray-900">{{ $activeClients }}</h3>
             <div class="flex items-center gap-1 mt-3">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -90,15 +90,15 @@
               </svg>
               @php $isUp = $activePercent >= 0; @endphp
 
-              <span class="text-sm font-medium {{ $isUp ? 'text-teal-500' : 'text-red-500' }}">
+              <span class="whitespace-nowrap text-xs sm:text-sm font-medium {{ $isUp ? 'text-teal-500' : 'text-red-500' }}">
                 {{ $isUp ? '+' : '' }}{{ number_format($activePercent, 1) }}%
               </span>
-              <span class="text-sm text-gray-500">
+              <span class="whitespace-nowrap text-xs sm:text-sm text-gray-500">
                 {{ $isUp ? 'Up from Last Week' : 'Down from Last Week' }}
               </span>
             </div>
           </div>
-          <svg width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="flex-shrink-0" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path opacity="0.21"
               d="M50.9697 0C63.6722 0.000138887 73.9697 10.2975 73.9697 23V51.1611C73.9697 63.8636 63.6722 74.161 50.9697 74.1611H23C10.2975 74.1611 0 63.8637 0 51.1611V23C9.2858e-06 10.2975 10.2975 0 23 0H50.9697Z"
               fill="#215195" />
@@ -120,7 +120,7 @@
         <div class="flex items-center justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600 mb-2">Top Performing Sales Representative</p>
-            <h3 class="text-3xl font-bold text-gray-900">
+            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">
               {{ $topRep ? ($topRep->first_name . ' ' . $topRep->last_name) : '—' }}
             </h3>
           </div>
@@ -143,7 +143,7 @@
         <div class="flex items-center justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600 mb-2">Most Active Agent</p>
-            <h3 class="text-3xl font-bold text-gray-900">
+            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">
               {{ $mostActiveRep ? ($mostActiveRep->first_name . ' ' . $mostActiveRep->last_name) : '—' }}
             </h3>
           </div>
@@ -167,17 +167,17 @@
       <!-- Clients Per Sales Rep Chart -->
       <div class="bg-white rounded-lg shadow-sm p-6">
         <h3 class="text-lg font-semibold text-gray-900 mb-6">Clients Per Sales Rep</h3>
-        <div class="flex items-center justify-center">
-          <div class="w-64 h-64">
+        <div class="flex flex-col md:flex-row items-center justify-center">
+          <div class="w-48 h-48 sm:w-64 sm:h-64">
             <canvas id="clientsPerRepChart"></canvas>
           </div>
-          <div class="ml-8 space-y-3">
+          <div class="mt-6 md:mt-0 md:ml-8 space-y-3">
             @foreach($clientsPerRep as $rep)
-              <div class="flex items-center gap-3">
-                <span class="w-3 h-3 rounded-full" style="background: {{ $rep->chart_color }}"></span>
-                <span class="text-sm text-gray-700">{{ $rep->first_name }} {{ $rep->last_name }}</span>
-                <span class="text-sm font-semibold text-gray-900 ml-auto">{{ $rep->contacts_count }}</span>
-              </div>
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full" style="background: {{ $rep->chart_color }}"></span>
+              <span class="text-sm text-gray-700">{{ $rep->first_name }} {{ $rep->last_name }}</span>
+              <span class="text-sm font-semibold text-gray-900 ml-auto">{{ $rep->contacts_count }}</span>
+            </div>
             @endforeach
           </div>
         </div>
@@ -186,7 +186,7 @@
       <!-- Preferred Contact Chart -->
       <div class="bg-white rounded-lg shadow-sm p-6">
         <h3 class="text-lg font-semibold text-gray-900 mb-6">Preferred Contact</h3>
-        <div class="h-64">
+        <div class="h-48 sm:h-64">
           <canvas id="preferredContactChart"></canvas>
         </div>
       </div>
@@ -194,8 +194,8 @@
   </div>
 
   @php
-    $repLabels = $clientsPerRep->map(fn($r) => $r->first_name . ' ' . $r->last_name)->values();
-    $repCounts = $clientsPerRep->pluck('contacts_count')->values();
+  $repLabels = $clientsPerRep->map(fn($r) => $r->first_name . ' ' . $r->last_name)->values();
+  $repCounts = $clientsPerRep->pluck('contacts_count')->values();
   @endphp
 
   <!-- Chart.js Script -->
@@ -228,10 +228,12 @@
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-          legend: { display: false },
+          legend: {
+            display: false
+          },
           tooltip: {
             callbacks: {
-              label: function (context) {
+              label: function(context) {
                 return context.label + ': ' + context.parsed + ' clients';
               }
             }
@@ -266,7 +268,12 @@
         datasets: [{
           data: preferredCounts,
           backgroundColor: preferredBg,
-          borderRadius: { topLeft: 10, topRight: 10, bottomLeft: 10, bottomRight: 10 },
+          borderRadius: {
+            topLeft: 10,
+            topRight: 10,
+            bottomLeft: 10,
+            bottomRight: 10
+          },
           borderSkipped: false,
           barThickness: 40
         }]
@@ -275,10 +282,12 @@
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-          legend: { display: false },
+          legend: {
+            display: false
+          },
           tooltip: {
             callbacks: {
-              label: function (context) {
+              label: function(context) {
                 return 'Contacts: ' + context.parsed.y;
               }
             }
@@ -287,14 +296,28 @@
         scales: {
           y: {
             beginAtZero: true,
-            grid: { display: false, drawBorder: false },
-            border: { display: false },
-            ticks: { color: '#9ca3af' }
+            grid: {
+              display: false,
+              drawBorder: false
+            },
+            border: {
+              display: false
+            },
+            ticks: {
+              color: '#9ca3af'
+            }
           },
           x: {
-            grid: { display: false, drawBorder: false },
-            border: { display: false },
-            ticks: { color: '#9ca3af' }
+            grid: {
+              display: false,
+              drawBorder: false
+            },
+            border: {
+              display: false
+            },
+            ticks: {
+              color: '#9ca3af'
+            }
           }
         }
       }
