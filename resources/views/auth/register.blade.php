@@ -34,8 +34,11 @@
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
 
+            <div class="flex items-center justify-between">
+                <x-input-label for="password" :value="__('Password')" />
+                <a href="#" class="text-blue-600 hover:text-blue-900">forgot?</a>
+            </div>
             <x-text-input id="password" class="block mt-1 w-full"
                 type="password"
                 name="password"
