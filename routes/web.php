@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminClientController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminSalesRepController;
+use App\Http\Controllers\AdminDashboardController;
 
 Route::get("/", function () {
     return view("auth.register");
@@ -36,9 +37,8 @@ Route::put('/sales-rep-contacts/{contact}', [SalesRepContactController::class, '
     ->name('sales-rep-contacts.update');
 
 // Admin - Dashboard
-Route::get("/admin-dashboard", function () {
-    return view("admin.admin-dashboard");
-})->name("admin-dashboard");
+Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])
+    ->name('admin-dashboard');
 
 // Admin - Sales Rep Management
 Route::get('/admin-sales-rep', [AdminSalesRepController::class, 'index'])

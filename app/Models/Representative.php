@@ -26,4 +26,9 @@ class Representative extends Authenticatable
     {
         return $this->pass;
     }
+
+    public function contacts()
+    {
+        return $this->hasMany(\App\Models\Contact::class, 'assigned_agent_id', 'representative_id');
+    }
 }
