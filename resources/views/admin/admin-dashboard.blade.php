@@ -243,7 +243,7 @@
     //Preferred Contact Chart Data
     const preferredContactData = @json($preferredContactData);
     const preferredLabels = ['Email', 'Call', 'WhatsApp', 'Viber', 'SMS/Text'];
-    const preferredKeys = ['email', 'call', 'whatsapp', 'viber', 'sms/text'];
+    const preferredKeys = ['email', 'call', 'whatsapp', 'viber', 'sms'];
 
     const preferredCounts = preferredKeys.map(k => preferredContactData[k] ?? 0);
 
@@ -252,7 +252,7 @@
       'call': '#2563eb',
       'whatsapp': '#22c55e',
       'viber': '#7c3aed',
-      'sms/text': '#9ca3af',
+      'sms': '#9ca3af',
     };
 
     const preferredBg = preferredKeys.map(k => preferredColors[k]);

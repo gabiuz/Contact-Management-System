@@ -16,7 +16,7 @@ class DashboardStatsService
         $activeClients = Contact::where('is_active', 'active')->count();
 
         // Preferred contact counts (fixed keys)
-        $preferredKeys = ['email', 'call', 'whatsapp', 'viber', 'sms/text'];
+        $preferredKeys = ['email', 'call', 'whatsapp', 'viber', 'sms'];
 
         $preferredCounts = Contact::query()
             ->selectRaw('LOWER(preferred_contact) as preferred_contact, COUNT(*) as total')

@@ -10,7 +10,7 @@ class SalesRepContactController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Contact::with('representative')->latest();
+        $query = Contact::with('representative')->orderBy('contact_id', 'asc');
 
         if ($request->filled('search')) {
             $s = $request->search;
@@ -24,7 +24,7 @@ class SalesRepContactController extends Controller
         }
 
         // keep search query when paging
-        $contacts = $query->paginate(10)->withQueryString();
+        $contacts = $query->paginate(5)->withQueryString();
 
         $representatives = Representative::select('representative_id', 'first_name', 'middle_name', 'last_name')
             ->orderBy('first_name')

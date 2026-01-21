@@ -281,13 +281,13 @@
             }
           }
         }
-      }
+      } 
     });
 
 
     // Preferred Contact Bar Chart
     const preferredLabels = ['Email', 'Call', 'WhatsApp', 'Viber', 'SMS/Text'];
-    const preferredKeys = ['email', 'call', 'whatsapp', 'viber', 'sms/text'];
+    const preferredKeys = ['email', 'call', 'whatsapp', 'viber', 'sms'];
 
     const preferredCounts = preferredKeys.map(k => Number(preferredContactData[k] ?? 0));
 

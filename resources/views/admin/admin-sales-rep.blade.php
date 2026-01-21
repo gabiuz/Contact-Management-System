@@ -39,30 +39,62 @@
     <div class="bg-white rounded-lg shadow-sm">
       <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
         <h3 class="text-base font-semibold text-black leading-6">List</h3>
-        <div class="flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
-          <button
-            class="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded transition-colors duration-200 flex items-center gap-1">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-            Prev
-          </button>
-          <div class="flex gap-1">
-            <button class="px-3 py-1.5 text-sm bg-blue-600 text-white rounded">1</button>
-            <button
-              class="px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors duration-200">2</button>
-            <span class="px-2 py-1.5 text-sm text-gray-500">...</span>
-            <button
-              class="px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors duration-200">11</button>
+        @if ($representatives->hasPages())
+          <div class="flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
+
+            {{-- Prev --}}
+            <a href="{{ $representatives->previousPageUrl() }}" class="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded transition-colors duration-200 flex items-center gap-1
+                {{ $representatives->onFirstPage() ? 'opacity-50 pointer-events-none' : '' }}">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+              Prev
+            </a>
+
+            {{-- Page numbers --}}
+            <div class="flex gap-1">
+              @php
+                $current = $representatives->currentPage();
+                $last = $representatives->lastPage();
+                $delta = 1; // show current +/- 1
+
+                $pages = [1];
+
+                for ($i = $current - $delta; $i <= $current + $delta; $i++) {
+                  if ($i > 1 && $i < $last)
+                    $pages[] = $i;
+                }
+
+                if ($last > 1)
+                  $pages[] = $last;
+
+                $pages = array_values(array_unique($pages));
+                sort($pages);
+              @endphp
+
+              @foreach ($pages as $i)
+                @if (!$loop->first && $i - $pages[$loop->index - 1] > 1)
+                  <span class="px-2 py-1.5 text-sm text-gray-500">…</span>
+                @endif
+
+                <a href="{{ $representatives->url($i) }}" class="px-3 py-1.5 text-sm rounded transition-colors duration-200
+                      {{ $i === $current ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100' }}">
+                  {{ $i }}
+                </a>
+              @endforeach
+            </div>
+
+            {{-- Next --}}
+            <a href="{{ $representatives->nextPageUrl() }}" class="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded transition-colors duration-200 flex items-center gap-1
+                {{ !$representatives->hasMorePages() ? 'opacity-50 pointer-events-none' : '' }}">
+              Next
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+
           </div>
-          <button
-            class="px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50 rounded transition-colors duration-200 flex items-center gap-1">
-            Next
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-        </div>
+        @endif
         <div class="w-16"></div>
       </div>
       <div class="overflow-x-auto">

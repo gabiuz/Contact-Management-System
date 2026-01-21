@@ -1,8 +1,13 @@
+@props([
+  'representatives' => [],
+  'action' => null,
+])
+
 <div id="addContactModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
   <div class="flex items-center justify-center min-h-screen p-4">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl p-8">
       <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Add New Client Contact</h2>
-      <form method="POST" action="{{ route('sales-rep-contacts.store') }}">
+      <form method="POST" action="{{ $action }}">
         @csrf
         @if ($errors->any())
           <div class="mb-4 p-3 rounded bg-red-100 text-red-700">

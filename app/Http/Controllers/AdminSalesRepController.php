@@ -9,7 +9,7 @@ class AdminSalesRepController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Representative::query()->latest('representative_id');
+        $query = Representative::query()->orderby('representative_id', 'asc');
 
         if ($request->filled('search')) {
             $s = $request->search;
@@ -21,7 +21,7 @@ class AdminSalesRepController extends Controller
             });
         }
 
-        $representatives = $query->paginate(10)->withQueryString();
+        $representatives = $query->paginate(7)->withQueryString();
 
         return view('admin.admin-sales-rep', compact('representatives'));
     }
