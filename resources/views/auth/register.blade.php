@@ -44,18 +44,19 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Confirm Password -->
+        <!-- role -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <x-input-label for="role" :value="__('role')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                type="password"
-                name="password_confirmation" required autocomplete="new-password" />
+            <select name="role" id="role" class="block mt-1 w-full border-gray-300 focus:border-[#D1E9FF] focus:ring-[#D1E9FF] rounded-md shadow-sm">
+                <option value="admin">Admin</option>
+                <option value="sales-rep">Sales Rep</option>
+            </select>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-center mt-4">
+        <div class="flex items-center justify-center mt-6">
 
             <x-primary-button>
                 {{ __('Register') }}
