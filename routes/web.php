@@ -8,6 +8,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminSalesRepController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\SalesRepDashboardController;
 
 Route::get("/", function () {
     return view("auth.register");
@@ -23,9 +24,8 @@ Route::post("/login", [LoginController::class, 'store'])->name("login.store");
 Route::post("/logout", [LoginController::class, 'logout'])->name("logout");
 
 
-Route::get("/sales-rep-dashboard", function () {
-    return view("sales-rep.sales-rep-dashboard");
-})->name("sales-rep-dashboard");
+Route::get('/sales-rep-dashboard', [SalesRepDashboardController::class, 'index'])
+    ->name('sales-rep-dashboard');
 
 // Sales Rep - Contacts page
 Route::get('/sales-rep-contacts', [SalesRepContactController::class, 'index'])
