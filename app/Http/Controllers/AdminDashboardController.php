@@ -36,13 +36,29 @@ class AdminDashboardController extends Controller
                 return $rep;
             });
 
+        $preferredKeys = ['email', 'call', 'whatsapp', 'viber', 'sms/text'];
+
+        $preferredCounts = Contact::query()
+            ->selectRaw('LOWER(preferred_contact) as preferred_contact, COUNT(*) as total')
+            ->whereNotNull('preferred_contact')
+            ->whereIn(\DB::raw('LOWER(preferred_contact)'), $preferredKeys)
+            ->groupByRaw('LOWER(preferred_contact)')
+            ->pluck('total', 'preferred_contact')
+            ->toArray();
+
+        $preferredContactData = [];
+        foreach ($preferredKeys as $k) {
+            $preferredContactData[$k] = (int) ($preferredCounts[$k] ?? 0);
+        }
+
         return view('admin.admin-dashboard', compact(
             'totalContacts',
             'totalSalesReps',
             'activeClients',
             'topRep',
             'mostActiveRep',
-            'clientsPerRep'
+            'clientsPerRep',
+            'preferredContactData'
         ));
     }
     function repColor(int $id): string

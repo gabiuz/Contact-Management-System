@@ -222,21 +222,34 @@
         }
       }
     })
+
+    //Preferred Contact Chart Data
+    const preferredContactData = @json($preferredContactData);
+    const preferredLabels = ['Email', 'Call', 'WhatsApp', 'Viber', 'SMS/Text'];
+    const preferredKeys = ['email', 'call', 'whatsapp', 'viber', 'sms/text'];
+
+    const preferredCounts = preferredKeys.map(k => preferredContactData[k] ?? 0);
+
+    const preferredColors = {
+      'email': '#1f2937',
+      'call': '#2563eb',
+      'whatsapp': '#22c55e',
+      'viber': '#7c3aed',
+      'sms/text': '#9ca3af',
+    };
+
+    const preferredBg = preferredKeys.map(k => preferredColors[k]);
     // Preferred Contact Bar Chart
     const preferredContactCtx = document.getElementById('preferredContactChart').getContext('2d');
+
     new Chart(preferredContactCtx, {
       type: 'bar',
       data: {
-        labels: ['Email', 'Call', 'WhatsApp', 'Viber', 'SMS/Text'],
+        labels: preferredLabels,
         datasets: [{
-          data: [85, 180, 110, 200, 60],
-          backgroundColor: ['#1f2937', '#2563eb', '#1f2937', '#60a5fa', '#9ca3af'],
-          borderRadius: {
-            topLeft: 10,
-            topRight: 10,
-            bottomLeft: 10,
-            bottomRight: 10
-          },
+          data: preferredCounts,
+          backgroundColor: preferredBg,
+          borderRadius: { topLeft: 10, topRight: 10, bottomLeft: 10, bottomRight: 10 },
           borderSkipped: false,
           barThickness: 40
         }]
@@ -245,9 +258,7 @@
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-          legend: {
-            display: false
-          },
+          legend: { display: false },
           tooltip: {
             callbacks: {
               label: function (context) {
@@ -259,29 +270,14 @@
         scales: {
           y: {
             beginAtZero: true,
-            grid: {
-              display: false,
-              drawBorder: false
-            },
-            border: {
-              display: false
-            },
-            ticks: {
-              stepSize: 50,
-              color: '#9ca3af'
-            }
+            grid: { display: false, drawBorder: false },
+            border: { display: false },
+            ticks: { color: '#9ca3af' }
           },
           x: {
-            grid: {
-              display: false,
-              drawBorder: false
-            },
-            border: {
-              display: false
-            },
-            ticks: {
-              color: '#9ca3af'
-            }
+            grid: { display: false, drawBorder: false },
+            border: { display: false },
+            ticks: { color: '#9ca3af' }
           }
         }
       }
