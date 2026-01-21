@@ -95,7 +95,7 @@
             </form>
         </div>
     </header>
-    <div class="flex">
+    <div class="flex min-h-screen">
         <!-- Sidebar -->
         <x-sales-rep-sidebar-navigation />
 

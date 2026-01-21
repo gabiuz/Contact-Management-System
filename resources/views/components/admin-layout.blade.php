@@ -95,7 +95,7 @@
       </form>
     </div>
   </header>
-  <div class="flex">
+  <div class="flex min-h-screen">
     <!-- Admin Sidebar -->
     <x-admin-sidebar-navigation />
 

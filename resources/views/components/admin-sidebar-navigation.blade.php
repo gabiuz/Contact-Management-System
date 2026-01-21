@@ -1,5 +1,5 @@
 <!-- Admin Sidebar -->
-<aside class="w-72 h-screen bg-violet-50 border border-gray-300 flex flex-col">
+<aside class="w-72 min-h-full bg-violet-50 border border-gray-300 flex flex-col">
   <nav class="flex-1 pl-[70px] py-8 pr-[56px]">
     <div class="flex flex-col gap-8">
       <div>
