@@ -1,13 +1,13 @@
 <x-sales-rep-layout>
   <div class="space-y-6">
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <!-- Total Contacts Card -->
       <div class="bg-white rounded-lg shadow-sm p-6">
         <div class="flex items-start justify-between">
           <div>
-            <p class="text-sm font-medium text-gray-600 mb-2">Total Contacts</p>
-            <h3 class="text-4xl font-bold text-gray-900">{{ $totalContacts }}</h3>
+            <p class="text-xs sm:text-sm font-medium text-gray-600 mb-2">Total Contacts</p>
+            <h3 class="text-3xl sm:text-4xl font-bold text-gray-900">{{ $totalContacts }}</h3>
             <div class="flex items-center gap-1 mt-3">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -27,7 +27,7 @@
               </span>
             </div>
           </div>
-          <svg width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="flex-shrink-0" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path opacity="0.21"
               d="M50.9697 0C63.6722 0.000138887 73.9697 10.2975 73.9697 23V51.1611C73.9697 63.8636 63.6722 74.161 50.9697 74.1611H23C10.2975 74.1611 0 63.8637 0 51.1611V23C9.2858e-06 10.2975 10.2975 0 23 0H50.9697Z"
               fill="#215195" />
@@ -45,8 +45,8 @@
       <div class="bg-white rounded-lg shadow-sm p-6">
         <div class="flex items-start justify-between">
           <div>
-            <p class="text-sm font-medium text-gray-600 mb-2">New Contacts (This Week)</p>
-            <h3 class="text-4xl font-bold text-gray-900">{{ $newContactsThisWeek }}</h3>
+            <p class="text-xs sm:text-sm font-medium text-gray-600 mb-2">New Contacts (This Week)</p>
+            <h3 class="text-3xl sm:text-4xl font-bold text-gray-900">{{ $newContactsThisWeek }}</h3>
             <div class="flex items-center gap-1 mt-3">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -62,7 +62,7 @@
               </span>
             </div>
           </div>
-          <svg width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="flex-shrink-0" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path opacity="0.21"
               d="M50.9697 0C63.6722 0.000138887 73.9697 10.2975 73.9697 23V51.1611C73.9697 63.8636 63.6722 74.161 50.9697 74.1611H23C10.2975 74.1611 0 63.8637 0 51.1611V23C9.2858e-06 10.2975 10.2975 0 23 0H50.9697Z"
               fill="#215195" />
@@ -80,8 +80,8 @@
       <div class="bg-white rounded-lg shadow-sm p-6">
         <div class="flex items-start justify-between">
           <div>
-            <p class="text-sm font-medium text-gray-600 mb-2">Active Clients</p>
-            <h3 class="text-4xl font-bold text-gray-900">{{ $activeClients }}</h3>
+            <p class="text-xs sm:text-sm font-medium text-gray-600 mb-2">Active Clients</p>
+            <h3 class="text-3xl sm:text-4xl font-bold text-gray-900">{{ $activeClients }}</h3>
             <div class="flex items-center gap-1 mt-3">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -98,7 +98,7 @@
               </span>
             </div>
           </div>
-          <svg width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="flex-shrink-0" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path opacity="0.21"
               d="M50.9697 0C63.6722 0.000138887 73.9697 10.2975 73.9697 23V51.1611C73.9697 63.8636 63.6722 74.161 50.9697 74.1611H23C10.2975 74.1611 0 63.8637 0 51.1611V23C9.2858e-06 10.2975 10.2975 0 23 0H50.9697Z"
               fill="#215195" />
@@ -116,7 +116,7 @@
     <!-- New Contacts Over Time Chart -->
     <div class="bg-white rounded-lg shadow-sm p-6">
       <div class="flex items-center gap-6 mb-6">
-        <h3 class="text-base font-semibold text-gray-900">New Contacts Over Time</h3>
+        <h3 class="text-sm sm:text-base font-semibold text-gray-900">New Contacts Over Time</h3>
         <div class="h-5 w-px bg-gray-300"></div>
         <div class="flex gap-4">
           <div class="flex items-center gap-2 text-sm text-gray-700">
@@ -129,7 +129,7 @@
           </div>
         </div>
       </div>
-      <div class="h-64">
+      <div class="h-48 sm:h-64">
         <canvas id="contactsChart"></canvas>
       </div>
     </div>
@@ -138,9 +138,9 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- Client Type Chart -->
       <div class="bg-white rounded-lg shadow-sm p-6">
-        <h3 class="text-lg font-semibold text-gray-900 mb-6">Client Type</h3>
-        <div class="flex items-center justify-center">
-          <div class="w-64 h-64">
+        <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-6">Client Type</h3>
+        <div class="flex flex-col md:flex-row items-center justify-center">
+          <div class="w-48 h-48 sm:w-64 sm:h-64">
             <canvas id="clientTypeChart"></canvas>
           </div>
           @php
@@ -159,7 +159,7 @@
             ];
           @endphp
 
-          <div class="ml-8 space-y-3">
+          <div class="mt-6 md:mt-0 md:ml-8 space-y-3">
             @foreach ($clientTypeLabels as $key => $label)
               <div class="flex items-center gap-3">
                 <span class="w-3 h-3 rounded-full {{ $clientTypeColors[$key] }}"></span>
@@ -175,8 +175,8 @@
 
       <!-- Preferred Contact Chart -->
       <div class="bg-white rounded-lg shadow-sm p-6">
-        <h3 class="text-lg font-semibold text-gray-900 mb-6">Preferred Contact</h3>
-        <div class="h-64">
+        <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-6">Preferred Contact</h3>
+        <div class="h-48 sm:h-64">
           <canvas id="preferredContactChart"></canvas>
         </div>
       </div>

@@ -22,7 +22,14 @@
 <body class="font-sans antialiased bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-sm">
-        <div class="px-8 py-4 flex items-center justify-between">
+        <div class="px-4 sm:px-8 py-4 flex items-center justify-between">
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleSidebar()" class="lg:hidden p-2 text-gray-600 hover:text-gray-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            
             <div class="flex gap-5 items-center">
                 <svg width="34" height="40" viewBox="0 0 34 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.5298 28.2589H14.7987V29.99H16.5298V28.2589Z" fill="url(#paint0_linear_128_216)" />
@@ -95,6 +102,10 @@
             </form>
         </div>
     </header>
+    
+    <!-- Mobile Sidebar Overlay -->
+    <div id="salesrep-sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
+    
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <x-sales-rep-sidebar-navigation />
@@ -103,13 +114,22 @@
         <div class="flex-1 flex flex-col min-h-screen">
 
             <!-- Page Content -->
-            <main class="flex-1 p-8">
+            <main class="flex-1 p-4 sm:p-6 lg:p-8">
                 {{ $slot }}
             </main>
 
             <x-footer />
         </div>
     </div>
+    
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('salesrep-sidebar');
+            const overlay = document.getElementById('salesrep-sidebar-overlay');
+            sidebar.classList.toggle('hidden');
+            overlay.classList.toggle('hidden');
+        }
+    </script>
 </body>
 
 </html>
