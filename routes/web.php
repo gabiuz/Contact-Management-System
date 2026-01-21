@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SalesRepContactController;
 use App\Http\Controllers\AdminClientController;
+use App\Http\Controllers\RegisterController;
 
 Route::get("/", function () {
     return view("auth.register");
 })->name("register");
 
-Route::post("/register", function () {
-    return redirect()->route("login");
-});
+Route::post("/register", [RegisterController::class, 'store'])
+    ->name("register.store");
+
 
 Route::get("/login", function () {
     return view("auth.login");
