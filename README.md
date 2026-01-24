@@ -86,9 +86,9 @@ npm run dev
 
 ## Accessing the App
 
-Open your browser and visit:
+Open your browser and visit the link provided from php artisan serve:
 
-http://127.0.0.1:8000
+example: http://127.0.0.1:8000
 
 ---
 
